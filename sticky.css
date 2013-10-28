@@ -1,0 +1,28 @@
+.sticky{
+	height: 200px;
+	width: 200px;
+	background-color: red;
+	font-family: Verdana;
+}
+.sticky .close {
+	position: absolute;
+	padding: 0 4px 0 0;
+	z-index:1;
+	top: 0;
+	right: 0;
+	cursor:pointer;
+}
+.sticky .email {
+	position: absolute;
+	padding: 0 0 0 0;
+	z-index:1;
+	top: 0;
+	right: 10px;
+	cursor:pointer;	
+}
+.sticky-content{
+	padding: 0 0 0 0;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}

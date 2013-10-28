@@ -4,7 +4,10 @@
   "description": "A configurable sticky note component.",
   "version": "0.0.1",
   "keywords": [],
-  "dependencies": {},
+  "dependencies": {
+    "jheytompkins/draggable": "*",
+    "jheytompkins/resizable": "*"
+  },
   "development": {},
   "license": "MIT",
   "main": "index.js",
@@ -13,5 +16,6 @@
   ],
   "styles": [
     "sticky.css"
-  ]
+  ],
+  "remotes": []
 }
