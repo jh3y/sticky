@@ -1,40 +1,38 @@
-# progress
+# sticky
 
-  A very minimal progress line component much like seen in modern UIs. Compatible with [component package manager](https://github.com/component/component).
+  A sticky note for your browser that can be exported by email or text file. Compatible with [component package manager](https://github.com/component/component).
 
 ## Demo
 	
-A demo of progress can be seen [here](http://jsfiddle.net/T5P44/1/).
+A demo of sticky can be seen [here](http://jsfiddle.net/695p7/).
 
 ## Installation
 
   Install with [component(1)](http://component.io):
 
-    $ component install jheytompkins/progress
+    $ component install jheytompkins/sticky
 
 ## Usage
 
-Use with or without [component package manager](https://github.com/component/component). Simply create your progress line and append its element to a container of your choice.
+Use with or without [component package manager](https://github.com/component/component). 
 
-	var progress = require('progress') //ONLY REQUIRED IF USING COMPONENT PACKAGE MANAGER
+	var sticky = require('sticky') //ONLY REQUIRED IF USING COMPONENT PACKAGE MANAGER
 
-Only use the above if using with the [component package manager](https://github.com/component/component), else simply do something like the following;
+Only use the above if using with the [component package manager](https://github.com/component/component), else you simply need to include the standalone file [sticky.js](https://github.com/jheytompkins/sticky/blob/master/sticky.js) and simply
 
-	var myProgress = new progress('red'); // create a red progress line
-	document.querySelector('.someContainer').appendChild(myProgess.element); // add it to the page
-	myProgress.setProgress(5); // set it to 5% just to get it started.
+	new sticky();
 
-Refer to the [demo](http://jsfiddle.net/T5P44/1/) or message me if you're stuck :)
+Refer to the [demo](http://jsfiddle.net/695p7/) or message me if you're stuck :)
 
 ## API
 
-###setProgress(number progress)
+###email()
 
-Set the progress of the line by providing a number(percent) of the line to fill. This should be between 0 and 100.
+Sets up a draft email in your mail client of notes made.
 
-###setColor(string color)
+###save()
 
-Set the color of the progress line by providing a string, either supported color name such as  `red` or hexidecimal value such as `#0000FF`. By default the progress line is set to green.
+Saves notes to a text file named `note.txt`.
 
 ## License
 
