@@ -20,7 +20,7 @@ Use with or without [component package manager](https://github.com/component/com
 
 Only use the above if using with the [component package manager](https://github.com/component/component), else you simply need to include the standalone file [sticky.js](https://github.com/jheytompkins/sticky/blob/master/sticky.js) and simply
 
-	new sticky();
+	new sticky(); //or var mySticky = new sticky(); if wanting to use the API functions.
 
 Refer to the [demo](http://jsfiddle.net/695p7/) or message me if you're stuck :)
 
@@ -33,6 +33,11 @@ Sets up a draft email in your mail client of notes made.
 ###save()
 
 Saves notes to a text file named `note.txt`.
+
+##Dependencies
+__sticky__ relies on the the two following components:
+* [jheytompkins/resizable](https://github.com/jheytompkins/resizable)
+* [jheytompkins/draggable](https://github.com/jheytompkins/draggable)
 
 ## License
 
