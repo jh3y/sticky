@@ -1,58 +1,101 @@
 module.exports = sticky;
 function sticky() {
 	if (!(this instanceof sticky)) return new sticky();
-	var draggable = require('draggable');
-	var resizable = require('resizable');
-	var thisSticky = this;
-	var element = document.createElement('div');
-	thisSticky.element = element;
+	var draggable = require('draggable'),
+		resizable = require('resizable'),
+		element = document.createElement('div'),
+		content = document.createElement('div'),
+		notes = document.createElement('ul'),
+		close = document.createElement('div'),
+		save = document.createElement('div'),
+		email = document.createElement('a'),
+		newsticky = this,
+		firstNote = newsticky._createNote('Click me to edit');
+	newsticky.element = element;
 	element.className = 'sticky';
-	//add content - this could actually be a ul li and then we press enter when we want a new list item.
-	var content = document.createElement('div');
 	content.className = 'sticky-content';
-	var notes = document.createElement('ul');
 	notes.className =  'sticky-notes';
-	var firstNote = thisSticky._createNote('Click me to edit');
-	notes.appendChild(firstNote);
-	content.appendChild(notes);
-	element.appendChild(content);
-	var close = document.createElement('div');
-	close.innerHTML = 'X';
+	close.innerHTML = "";
 	close.className = 'close';
+	close.setAttribute('title', 'remove note');
 	close.addEventListener('click', function () {
 		element.remove();
 	}, true);
-	element.appendChild(close);
-	var email = document.createElement('a');
+	save.innerHTML = "";
+	save.className = 'save';
+	save.setAttribute('title', 'save note');
+	save.addEventListener('click', function () {
+		newsticky.save();
+	}, true);
 	email.innerHTML = '@';
 	email.className = 'email';
-	//create the string that needs to be emailed here complete with spacing and subject line etc. Maybe just do like recipient, subject is note made on date and content is whatever you put in the sticky note.
-	var mailtoString = '';
-	email.setAttribute('href', mailtoString);
+	email.setAttribute('title', 'email note');
+	email.addEventListener('click', function () {
+		newsticky.email();
+	});
+	element.appendChild(close);
+	notes.appendChild(firstNote);
+	content.appendChild(notes);
+	element.appendChild(content);
 	element.appendChild(email);
+	element.appendChild(save);
 	document.body.appendChild(element);
-	//incompatible with ghosting which is a shame and I think this is because the click handler gets confused when we do cloneNode.
+	//TODO: incompatible with jheytompkins/ghosting which is a shame and I think this is because the click handler gets confused when we do cloneNode so look at not using cloneNode.
 	new draggable(element, {'ghosting': false});
 	new resizable(element);
 }
+sticky.prototype._getContent = function () {
+	var sticky = this,
+		contentString = 'Here are your notes for today',
+	 	regex = new RegExp( '%E2%80%A2', 'gi');
+	[].forEach.call(sticky.element.querySelectorAll('.sticky-note'), function (note){
+		contentString = contentString + '• ' + note.innerHTML.toString().trim();
+	});
+	contentString = encodeURIComponent(contentString.trim());
+	return contentString.replace(regex, '%0D%0A%E2%80%A2');	
+}
+sticky.prototype.email = function () {
+	var sticky = this,
+		mailto = 'mailto:',
+		recipient = 'someone@somewhere.com',
+		d = new Date(),
+		subject = 'note written on ' + d.toString(),
+		mailtoString = mailto + recipient + '?subject=' + encodeURIComponent(subject.trim()) + '&body=' + sticky._getContent();
+	sticky.element.querySelector('.email').setAttribute('href', mailtoString);
+	sticky.element.querySelector('.email').click();
+}
+sticky.prototype.save = function () {
+	var sticky = this,
+		saveAnchor = document.createElement('a'),
+		filename = 'note.txt',
+		content = sticky._getContent();
+	document.body.appendChild(saveAnchor);
+	saveAnchor.setAttribute('download', filename);
+	saveAnchor.setAttribute('href', 'data:text/plain,' + content);
+	saveAnchor.click();
+	saveAnchor.remove();
+}
 sticky.prototype._createNote = function (content) {
-	var sticky = this;
-	var note = document.createElement('li');
+	var sticky = this,
+		note = document.createElement('li'),
+		notePress,
+		l,
+		newNote;
 	note.className = 'sticky-note';
 	note.innerHTML = (content !== undefined) ? content: null;
 	note.setAttribute('contenteditable', true);
 	note.addEventListener('keyup', function (e) {
-		var notePress = this;
+		notePress = this;
 		if (e.keyCode === 13 ) {
 			e.preventDefault();
 			notePress.innerHTML = notePress.innerHTML.replace('<div><br></div>', '').replace('<br><br>', '');
-			var note = sticky._createNote();
-			sticky.element.querySelector('.sticky-notes').appendChild(note);
-			note.focus();
+			newNote = sticky._createNote();
+			sticky.element.querySelector('.sticky-notes').appendChild(newNote);
+			newNote.focus();
 		} else if ((e.keyCode === 8 || e.which === 8) && (this.innerHTML.trim() === "<br>" || this.innerHTML.trim() === '') && sticky.element.querySelectorAll('.sticky-note').length > 1) {
 			e.preventDefault();
 			this.remove();
-			var l = sticky.element.querySelectorAll('.sticky-note').length;
+			l = sticky.element.querySelectorAll('.sticky-note').length;
 			sticky.element.querySelectorAll('.sticky-note')[l -1].focus();
 		}
 	});
