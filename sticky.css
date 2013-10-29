@@ -1,8 +1,14 @@
 .sticky{
-	height: 200px;
+	height: auto;
+	min-height: 100px;
+	padding: 5px 5px 5px 5px;
 	width: 200px;
-	background-color: red;
+	background-color: #fffed0;
 	font-family: Verdana;
+	cursor: move;
+	overflow: auto;
+	color: #a8a8a8;
+	box-shadow: #ebebeb 0px 5px 5px;
 }
 .sticky .close {
 	position: absolute;
@@ -12,17 +18,32 @@
 	right: 0;
 	cursor:pointer;
 }
+.sticky-notes {
+	font-family: cursive;
+	cursor: move;
+}
+.sticky-note {
+	cursor: text;
+}
+.sticky-note:focus {
+	outline: none;
+	border: none;
+}
 .sticky .email {
 	position: absolute;
-	padding: 0 0 0 0;
+	padding: 0 4px 0 0;
 	z-index:1;
 	top: 0;
-	right: 10px;
+	color: #a8a8a8;
+	right: 14px;
+	text-decoration: none;
 	cursor:pointer;	
 }
 .sticky-content{
+	margin: 20px 0 0 0;
 	padding: 0 0 0 0;
-	height: 100%;
+	height: auto;
 	width: 100%;
 	position: absolute;
+	overflow: auto;
 }

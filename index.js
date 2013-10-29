@@ -39,14 +39,18 @@ sticky.prototype._createNote = function (content) {
 	var sticky = this;
 	var note = document.createElement('li');
 	note.className = 'sticky-note';
-	note.innerHTML = (content !== undefined) ? content: '';
+	note.innerHTML = (content !== undefined) ? content: null;
 	note.setAttribute('contenteditable', true);
-	note.addEventListener('keypress', function (e) {
+	note.addEventListener('keyup', function (e) {
+		var notePress = this;
 		if (e.keyCode === 13 ) {
+			e.preventDefault();
+			notePress.innerHTML = notePress.innerHTML.replace('<div><br></div>', '').replace('<br><br>', '');
 			var note = sticky._createNote();
 			sticky.element.querySelector('.sticky-notes').appendChild(note);
 			note.focus();
-		} else if (e.keyCode === 8 && this.innerHTML.trim() === "<br>" && sticky.element.querySelectorAll('.sticky-note').length > 1) {
+		} else if ((e.keyCode === 8 || e.which === 8) && (this.innerHTML.trim() === "<br>" || this.innerHTML.trim() === '') && sticky.element.querySelectorAll('.sticky-note').length > 1) {
+			e.preventDefault();
 			this.remove();
 			var l = sticky.element.querySelectorAll('.sticky-note').length;
 			sticky.element.querySelectorAll('.sticky-note')[l -1].focus();
