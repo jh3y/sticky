@@ -481,7 +481,8 @@ function sticky() {
 		newsticky = this,
 		firstNote = newsticky._createNote('Click me to edit');
 	newsticky.element = element;
-	element.className = 'sticky';
+	newsticky.element.className = 'sticky';
+	newsticky.element.setAttribute('data-sticky', true);
 	content.className = 'sticky-content';
 	notes.className =  'sticky-notes';
 	close.innerHTML = "";
@@ -502,16 +503,16 @@ function sticky() {
 	email.addEventListener('click', function () {
 		newsticky.email();
 	});
-	element.appendChild(close);
+	newsticky.element.appendChild(close);
 	notes.appendChild(firstNote);
 	content.appendChild(notes);
-	element.appendChild(content);
-	element.appendChild(email);
-	element.appendChild(save);
-	document.body.appendChild(element);
+	newsticky.element.appendChild(content);
+	newsticky.element.appendChild(email);
+	newsticky.element.appendChild(save);
+	document.body.appendChild(newsticky.element);
 	//TODO: incompatible with jheytompkins/ghosting which is a shame and I think this is because the click handler gets confused when we do cloneNode so look at not using cloneNode.
-	new draggable(element, {'ghosting': false});
-	new resizable(element);
+	new draggable(newsticky.element, {'ghosting': false});
+	new resizable(newsticky.element);
 }
 sticky.prototype._getContent = function () {
 	var sticky = this,

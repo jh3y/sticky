@@ -57,7 +57,7 @@
 	cursor: nwse-resize;
 }
 
-.sticky{
+div.sticky[data-sticky=true]{
 	height: auto;
 	min-height: 100px;
 	width: 200px;
@@ -68,7 +68,7 @@
 	color: #666;
 	box-shadow: #ebebeb 0px 5px 5px;
 }
-.sticky .close {
+div.sticky[data-sticky=true] > div.close {
 	border: 2px solid #ababab;
 	cursor: pointer;
 	padding: 0 10px 0 0;
@@ -82,7 +82,7 @@
 	width: 0;
 	z-index: 1;
 }
-.sticky .close:before{
+div.sticky[data-sticky=true] > div.close:before{
 	border: 2px solid #ababab;
 	content: "";
 	height: 0;
@@ -96,10 +96,10 @@
 	-o-transform: rotate(90deg);
 	width:100%;
 }
-.sticky .close:hover, .sticky .close:hover:before {
+div.sticky[data-sticky=true] > div.close:hover, div.sticky[data-sticky=true] > div.close:hover:before {
 	border-color: #444;
 }
-.sticky .save {
+div.sticky[data-sticky=true] > div.save {
 	border: 2px solid #ababab;
 	cursor: pointer;
 	padding: 0 8px 0 0;
@@ -113,7 +113,7 @@
 	width: 0;
 	z-index: 1;
 }
-.sticky .save:before {
+div.sticky[data-sticky=true] > div.save:before {
 	cursor: pointer;
 	position: absolute;
 	right: -7px;
@@ -129,25 +129,25 @@
 	border-bottom: 8px solid #ababab;
 	border-top: none;
 }
-.sticky .save:hover {
+div.sticky[data-sticky=true] > div.save:hover {
 	border-color: #444;
 }
-.sticky .save:hover:before {
+div.sticky[data-sticky=true] > div.save:hover:before {
 	border-bottom: 8px solid #444;
 }
-.sticky-notes {
+div.sticky[data-sticky=true] > div.sticky-content > ul.sticky-notes {
 	font-family: cursive;
 	cursor: move;
 }
-.sticky-note {
+div.sticky[data-sticky=true] > div.sticky-content > ul.sticky-notes > li.sticky-note {
 	cursor: text;
 	list-style: square;
 }
-.sticky-note:focus {
+div.sticky[data-sticky=true] > div.sticky-content > ul.sticky-notes > li.sticky-note:focus {
 	outline: none;
 	border: none;
 }
-.sticky .email {
+div.sticky[data-sticky=true] > a.email {
 	position: absolute;
 	padding: 0 4px 0 0;
 	z-index:1;
@@ -157,10 +157,10 @@
 	text-decoration: none;
 	cursor:pointer;	
 }
-.sticky .email:hover {
+div.sticky[data-sticky=true] > a.email:hover {
 	color: #444;
 }
-.sticky-content{
+div.sticky[data-sticky=true] > div.sticky-content{
 	padding: 0 0 0 0;
 	height: auto;
 	width: 100%;
