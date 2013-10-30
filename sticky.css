@@ -2,7 +2,7 @@ div.sticky[data-sticky=true]{
 	height: auto;
 	min-height: 100px;
 	width: 200px;
-	background-color: #fffed0;
+	background: #fffed0 !important;
 	font-family: Verdana;
 	cursor: move;
 	overflow: auto;
@@ -79,10 +79,12 @@ div.sticky[data-sticky=true] > div.save:hover:before {
 div.sticky[data-sticky=true] > div.sticky-content > ul.sticky-notes {
 	font-family: cursive;
 	cursor: move;
+	margin: 0 0 0 0;
 }
 div.sticky[data-sticky=true] > div.sticky-content > ul.sticky-notes > li.sticky-note {
 	cursor: text;
 	list-style: square;
+	text-align: left;
 }
 div.sticky[data-sticky=true] > div.sticky-content > ul.sticky-notes > li.sticky-note:focus {
 	outline: none;
@@ -105,5 +107,7 @@ div.sticky[data-sticky=true] > div.sticky-content{
 	padding: 0 0 0 0;
 	height: auto;
 	width: 100%;
+	margin: 16px 0px 16px 0px;
+	top: 0;
 	position: absolute;
 }
