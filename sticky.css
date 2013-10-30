@@ -80,6 +80,7 @@ div.sticky[data-sticky=true] > div.sticky-content > ul.sticky-notes {
 	font-family: cursive;
 	cursor: move;
 	margin: 0 0 0 0;
+	padding: 0 0 0 40px;
 }
 div.sticky[data-sticky=true] > div.sticky-content > ul.sticky-notes > li.sticky-note {
 	cursor: text;
