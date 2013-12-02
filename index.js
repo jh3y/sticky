@@ -41,7 +41,7 @@ function sticky() {
 	newsticky.element.appendChild(email);
 	newsticky.element.appendChild(save);
 	document.body.appendChild(newsticky.element);
-	//TODO: incompatible with jheytompkins/ghosting which is a shame and I think this is because the click handler gets confused when we do cloneNode so look at not using cloneNode.
+	//TODO: incompatible with jh3y/ghosting which is a shame and I think this is because the click handler gets confused when we do cloneNode so look at not using cloneNode.
 	new draggable(newsticky.element, {'ghosting': false});
 	new resizable(newsticky.element);
 }

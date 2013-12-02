@@ -10,7 +10,7 @@ A demo of sticky can be seen [here](http://jsfiddle.net/695p7/).
 
   Install with [component(1)](http://component.io):
 
-    $ component install jheytompkins/sticky
+    $ component install jh3y/sticky
 
 ## usage
 Use with or without [component package manager](https://github.com/component/component).
@@ -21,7 +21,7 @@ Use with or without [component package manager](https://github.com/component/com
 
 Refer to the [demo](http://jsfiddle.net/695p7/) or message me if you're stuck :)
 ###use without component package manager
-Simply need to include the standalone file [sticky.js](https://github.com/jheytompkins/sticky/blob/master/sticky.js) and simply
+Simply need to include the standalone file [sticky.js](https://github.com/jh3y/sticky/blob/master/sticky.js) and simply
 
 	new sticky(); //or var mySticky = new sticky(); if wanting to use the API functions.
 
@@ -39,8 +39,8 @@ Saves notes to a text file named `note.txt`.
 
 ##dependencies
 __sticky__ relies on the the two following components:
-* [jheytompkins/resizable](https://github.com/jheytompkins/resizable)
-* [jheytompkins/draggable](https://github.com/jheytompkins/draggable)
+* [jh3y/resizable](https://github.com/jh3y/resizable)
+* [jh3y/draggable](https://github.com/jh3y/draggable)
 
 ##contributions
 and suggestions are of course welcome :)

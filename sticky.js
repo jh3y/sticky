@@ -200,7 +200,7 @@ require.relative = function(parent) {
 
   return localRequire;
 };
-require.register("jheytompkins-draggable/index.js", function(exports, require, module){
+require.register("jh3y-draggable/index.js", function(exports, require, module){
 module.exports = draggable;
 
 function draggable(element, options) {
@@ -356,7 +356,7 @@ draggable.prototype._create = function () {
 }
 
 });
-require.register("jheytompkins-resizable/index.js", function(exports, require, module){
+require.register("jh3y-resizable/index.js", function(exports, require, module){
 module.exports = resizable;
 
 function resizable(element, options) {
@@ -510,7 +510,7 @@ function sticky() {
 	newsticky.element.appendChild(email);
 	newsticky.element.appendChild(save);
 	document.body.appendChild(newsticky.element);
-	//TODO: incompatible with jheytompkins/ghosting which is a shame and I think this is because the click handler gets confused when we do cloneNode so look at not using cloneNode.
+	//TODO: incompatible with jh3y/ghosting which is a shame and I think this is because the click handler gets confused when we do cloneNode so look at not using cloneNode.
 	new draggable(newsticky.element, {'ghosting': false});
 	new resizable(newsticky.element);
 }
@@ -575,14 +575,14 @@ sticky.prototype._createNote = function (content) {
 });
 
 
-require.alias("jheytompkins-draggable/index.js", "sticky/deps/draggable/index.js");
-require.alias("jheytompkins-draggable/index.js", "sticky/deps/draggable/index.js");
-require.alias("jheytompkins-draggable/index.js", "draggable/index.js");
-require.alias("jheytompkins-draggable/index.js", "jheytompkins-draggable/index.js");
-require.alias("jheytompkins-resizable/index.js", "sticky/deps/resizable/index.js");
-require.alias("jheytompkins-resizable/index.js", "sticky/deps/resizable/index.js");
-require.alias("jheytompkins-resizable/index.js", "resizable/index.js");
-require.alias("jheytompkins-resizable/index.js", "jheytompkins-resizable/index.js");
+require.alias("jh3y-draggable/index.js", "sticky/deps/draggable/index.js");
+require.alias("jh3y-draggable/index.js", "sticky/deps/draggable/index.js");
+require.alias("jh3y-draggable/index.js", "draggable/index.js");
+require.alias("jh3y-draggable/index.js", "jh3y-draggable/index.js");
+require.alias("jh3y-resizable/index.js", "sticky/deps/resizable/index.js");
+require.alias("jh3y-resizable/index.js", "sticky/deps/resizable/index.js");
+require.alias("jh3y-resizable/index.js", "resizable/index.js");
+require.alias("jh3y-resizable/index.js", "jh3y-resizable/index.js");
 require.alias("sticky/index.js", "sticky/index.js");if (typeof exports == "object") {
   module.exports = require("sticky");
 } else if (typeof define == "function" && define.amd) {

@@ -1,12 +1,12 @@
 {
   "name": "sticky",
-  "repo": "jheytompkins/sticky",
+  "repo": "jh3y/sticky",
   "description": "A configurable sticky note component.",
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "jheytompkins/draggable": "*",
-    "jheytompkins/resizable": "*"
+    "jh3y/draggable": "*",
+    "jh3y/resizable": "*"
   },
   "development": {},
   "license": "MIT",
